@@ -1,0 +1,32 @@
+{
+  "name": "formula-engine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "npm run test-web",
+    "start": "node .",
+    "start:dev": "NODE_ENV=development PROCESS_TYPE=web PORT=8080 DATABASE_NAME=formulas USER_NAME={usernamehere} PASSWORD={passwordhere} HOST_NAME={hostname} ENCRYPT=true node ."
+  },
+  "author": "Alex Diokmedjian",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "joi": "^10.0.5",
+    "morgan": "^1.7.0",
+    "sequelize": "^3.27.0",
+    "tedious": "^1.14.0",
+    "winston": "^2.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^2.0.0-rc.1",
+    "mocha": "^3.2.0",
+    "sinon": "^1.17.6"
+  }
+}
