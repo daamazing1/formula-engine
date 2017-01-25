@@ -1,6 +1,6 @@
 'use strict';
 
-const models = require('../../../../models');
+const models = require.main.require('./models');
 
 module.exports = {
   all: (req, res) => {
