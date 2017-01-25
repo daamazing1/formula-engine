@@ -12,7 +12,9 @@ const envVarsSchema = joi.object({
     .truthy('true')
     .falsy('FALSE')
     .falsy('false')
-    .default(true)
+    .default(true),
+  LOGGER_FILE: joi.string()
+    .default('./logs/all-logs.log')
 }).unknown().required();
 
 const { error, value: envVars } = joi.validate(process.env, envVarsSchema);
@@ -23,14 +25,15 @@ if(error){
 const config = {
   logger: {
     level: envVars.LOGGER_LEVEL,
-    enabled: envVars.LOGGER_ENABLED
+    enabled: envVars.LOGGER_ENABLED,
+    file: envVars.LOGGER_FILE
   }
 };
 
 winston.level = config.logger.level;
 winston.emitErrs = true;
 winston.add(winston.transports.File, {
-  filename: './logs/all-logs.log',
+  filename: config.logger.file,
   handleExceptions: true,
   json: true,
   maxsize: 5242880,
